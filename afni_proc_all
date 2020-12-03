@@ -1,0 +1,23 @@
+#!/bin/tcsh
+
+foreach subj (s*)
+	foreach task (ad_evt lh_evt rh_evt vs_evt)
+	
+		set prefix = $subj$task
+		afni_proc.py \
+			-subj_id $prefix \
+			-dsets ./$subj/$task+orig.HEAD \
+			-copy_anat ./$subj/anat/anat_orig/anat_$subj.nii.gz \
+			-blocks despike tshift align tlrc volreg blur mask scale regress \
+			-tlrc_base /home/jj/abin/MNI152_T1_2009c+tlrc.BRIK.gz \
+			-volreg_align_to MIN_OUTLIER \
+			-volreg_align_e2a \
+			-volreg_warp_dxyz 3 \
+			-mask_epi_anat yes \
+			-blur_size 8 \
+			-regress_reml_exec \
+			-regress_apply_mask \
+			-html_review_style pythonic \
+			-execute
+	end
+end

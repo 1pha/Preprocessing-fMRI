@@ -3,6 +3,6 @@
 foreach subj (*.results)
 
 	mkdir ./htmls/$subj
-	cp -r  $subj/QC*/*   ./htmls/$subj
+	cp -r $subj/QC*/*   ./htmls/$subj
 
 end

@@ -1,0 +1,9 @@
+#!/bin/tcsh
+
+set A = $argv[1]
+set B = $argv[2]
+
+3dttest++ -setA $A/res./stats* \
+	  -setB $B/res./stats* \
+	  -paired
+

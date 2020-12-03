@@ -1,0 +1,12 @@
+#!/bin/tcsh
+
+3dANOVA -levels 4 \
+	-dset 1 ad/res./stats* \
+	-dset 2 lh/res./*  \
+	-dset 3 rh/res./*  \
+	-dset 4 vs/res./*  \
+	\
+	-contr 1 1 1 -1 ALRvV \
+	-contr 1 1 -1 1 ALVvR \
+	-contr 1 -1 1 1 ARVvL \
+	-contr -1 1 1 1 LRVvA
